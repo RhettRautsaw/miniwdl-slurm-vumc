@@ -1,6 +1,8 @@
-miniwdl-slurm
+miniwdl-slurm-vumc
 =============
-Extends miniwdl to run workflows on SLURM clusters in singularity containers.
+Extends miniwdl to run workflows on SLURM clusters in singularity containers. 
+
+# THIS IS A MODIFIED VERSION FOR VUMC ONLY
 
 This `SLURM backend
 <https://miniwdl.readthedocs.io/en/latest/runner_backends.html>`_ plugin for
@@ -10,13 +12,9 @@ description has a container, singularity will be used as container runtime.
 
 Installation
 ------------
-For the latest stable version::
+For the VUMC development version::
 
-    pip install miniwdl-slurm
-
-For the development version::
-
-    pip install git+https://github.com/miniwdl-ext/miniwdl-slurm.git
+    pip install git+https://github.com/rhettrautsaw/miniwdl-slurm-vumc.git
 
 Configuration
 --------------
