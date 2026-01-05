@@ -148,25 +148,20 @@ class SlurmSingularity(SingularityContainer):
             # If no gpuType is given, use the default GPU type.
             sbatch_args.extend(["--gres", f"gpu:{gpuCount}"])
 
-        account = self.runtime_values.get("slurm_account", None)
-        account_gpu = self.runtime_values.get("slurm_account_gpu", None)
-        if gpuCount is not None and account_gpu is not None:
-            sbatch_args.extend(["--account", account_gpu])
-        elif account is not None:
-            sbatch_args.extend(["--account", account])
-
-        partition = self.runtime_values.get("slurm_partition", None)
-        partition_gpu = self.runtime_values.get("slurm_partition_gpu", None)
-        if gpuCount is not None and partition_gpu is not None:
-            sbatch_args.extend(["--partition", partition_gpu])
-        elif partition is not None:
+        if gpuCount is not None:
+            partition = self.runtime_values.get("slurm_partition_gpu", None)
+            qos = self.runtime_values.get("slurm_qos_gpu", None)
+            account = self.runtime_values.get("slurm_account_gpu", None)
+        else:
+            partition = self.runtime_values.get("slurm_partition", None)
+            qos = self.runtime_values.get("slurm_qos", None)
+            account = self.runtime_values.get("slurm_account", None)
+        
+        if partition is not None:
             sbatch_args.extend(["--partition", partition])
-
-        qos = self.runtime_values.get("slurm_qos", None)
-        qos_gpu = self.runtime_values.get("slurm_qos_gpu", None)
-        if gpuCount is not None and qos_gpu is not None:
-            sbatch_args.extend(["--qos", qos_gpu])
-        elif qos is not None:
+        if account is not None:
+            sbatch_args.extend(["--account", account])
+        if qos is not None:
             sbatch_args.extend(["--qos", qos])
 
         cpu = self.runtime_values.get("cpu", None)
