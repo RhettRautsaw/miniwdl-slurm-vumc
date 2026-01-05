@@ -2,7 +2,8 @@ miniwdl-slurm-vumc
 =============
 Extends miniwdl to run workflows on SLURM clusters in singularity containers. 
 
-# THIS IS A MODIFIED VERSION FOR VUMC ONLY
+THIS IS A MODIFIED VERSION FOR VUMC ONLY
+=============
 
 This `SLURM backend
 <https://miniwdl.readthedocs.io/en/latest/runner_backends.html>`_ plugin for
